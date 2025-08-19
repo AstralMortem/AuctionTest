@@ -1,0 +1,22 @@
+
+services:
+  app:
+    container_name: auction_backend
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    
+  postgres:
+    image: postgres:17
+    container_name: auction_db
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+volumes:
+  postgres_data:
